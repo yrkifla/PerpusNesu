@@ -126,7 +126,7 @@ function renderCatalog() {
     } else {
         noResults.classList.add('d-none');
         filtered.forEach(book => {
-           // Di dalam loop renderCatalog()
+           
 bookContainer.innerHTML += `
     <div class="col-6 col-md-3 mb-4"> <!-- UBAH DI SINI: col-6 untuk HP, col-md-3 untuk PC -->
         <div class="card book-card border-0 shadow-sm h-100">

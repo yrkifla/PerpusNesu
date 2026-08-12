@@ -32,7 +32,7 @@
     position: fixed;
     bottom: 20px;
     right: 20px;
-    z-index: 1050; /* Pastikan selalu di atas elemen lain */
+    z-index: 1050;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -56,7 +56,6 @@
     border: none;
 }
 
-/* Memperkecil teks di HP agar tidak meluap */
 @media (max-width: 576px) {
     .card-title {
         font-size: 0.85rem !important;
