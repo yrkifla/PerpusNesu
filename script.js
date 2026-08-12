@@ -123,24 +123,21 @@ function renderCatalog() {
     } else {
         noResults.classList.add('d-none');
         filtered.forEach(book => {
-            bookContainer.innerHTML += `
-                <div class="col-md-3 col-sm-6 mb-4">
-                    <div class="card book-card border-0 shadow-sm">
-                        <img src="${book.image}" class="card-img-top" alt="${book.title}" style="height: 220px; object-fit: cover;">
-                        <div class="card-body d-flex flex-column">
-                            <div class="d-flex justify-content-between align-items-center mb-2">
-                                <span class="badge bg-secondary">${book.category}</span>
-                                <small class="text-muted"><i class="bi bi-eye"></i> ${book.reads}</small>
-                            </div>
-                            <h5 class="card-title fs-6 fw-bold">${book.title}</h5>
-                            <p class="card-text text-muted small mb-3">Oleh: ${book.author}</p>
-                            <button class="mt-auto btn btn-outline-primary btn-sm w-100" onclick="bacaBuku('${book.id}', '${book.title}', '${book.link}')">
-                                <i class="bi bi-book me-1"></i> Baca Buku
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            `;
+           // Di dalam loop renderCatalog()
+bookContainer.innerHTML += `
+    <div class="col-6 col-md-3 mb-4"> <!-- UBAH DI SINI: col-6 untuk HP, col-md-3 untuk PC -->
+        <div class="card book-card border-0 shadow-sm h-100">
+            <img src="${book.image}" class="card-img-top" alt="${book.title}" style="height: 150px; object-fit: cover;"> <!-- Perkecil tinggi gambar agar tidak terlalu panjang di HP -->
+            <div class="card-body d-flex flex-column p-2"> <!-- Padding p-2 agar lebih hemat tempat -->
+                <h5 class="card-title fs-6 fw-bold text-truncate">${book.title}</h5>
+                <p class="card-text text-muted small mb-2 text-truncate">${book.author}</p>
+                <button class="mt-auto btn btn-outline-primary btn-sm w-100" onclick="bacaBuku('${book.id}', '${book.title}', '${book.link}')">
+                    <i class="bi bi-book me-1"></i> Baca
+                </button>
+            </div>
+        </div>
+    </div>
+`;
         });
     }
 }
@@ -149,3 +146,19 @@ function renderCatalog() {
 searchInput.addEventListener('input', renderCatalog);
 categoryFilter.addEventListener('change', renderCatalog);
 sortOrder.addEventListener('change', renderCatalog);
+
+// action-menu.js
+document.addEventListener('DOMContentLoaded', () => {
+    const mainBtn = document.getElementById('mainActionBtn');
+    const donateBtn = document.getElementById('donateBtn');
+    const requestBtn = document.getElementById('requestBtn');
+
+    mainBtn.addEventListener('click', () => {
+        donateBtn.classList.toggle('d-none');
+        requestBtn.classList.toggle('d-none');
+        
+        const icon = mainBtn.querySelector('i');
+        icon.classList.toggle('bi-three-dots');
+        icon.classList.toggle('bi-x-lg');
+    });
+});

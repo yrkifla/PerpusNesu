@@ -23,3 +23,45 @@
 .navbar-brand span{
     color: rgb(0, 97, 243);
 }
+
+
+
+/*donate dan rekues jir*/
+
+.action-menu-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1050; /* Pastikan selalu di atas elemen lain */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 12px;
+}
+
+.action-btn {
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.main-action-btn {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+}
+
+/* Memperkecil teks di HP agar tidak meluap */
+@media (max-width: 576px) {
+    .card-title {
+        font-size: 0.85rem !important;
+    }
+    .card-text {
+        font-size: 0.75rem !important;
+    }
+}

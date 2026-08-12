@@ -116,19 +116,21 @@
     <script type="module" src="script.js"></script>
 
     <!-- Floating Donate Button with Text & Dollar Icon -->
-    <a href="https://saweria.co/elanhas" target="_blank" class="btn btn-success shadow-lg position-fixed bottom-0 end-0 m-4 d-flex align-items-center gap-2 px-3 py-2 rounded-pill text-white fw-bold" style="z-index: 1000; text-decoration: none;" title="Dukung Kami">
-        <span class="bg-white text-success rounded-circle d-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
-            <i class="bi bi-currency-dollar fs-5"></i>
-        </span>
-        <span>Donate</span>
+    <div class="action-menu-container">
+    <!-- Tombol Donasi -->
+    <a href="https://saweria.co/elanhas" target="_blank" id="donateBtn" class="btn btn-success action-btn rounded-pill d-none px-3 py-2 fw-bold align-items-center gap-2">
+        <i class="bi bi-currency-dollar"></i> Donate
     </a>
 
-    <!-- Tombol Pindah Halaman Request Buku -->
-    <a href="request/request.html" class="btn btn-primary shadow-lg position-fixed bottom-0 start-0 m-4 d-flex align-items-center gap-2 px-3 py-2 rounded-pill text-white fw-bold" style="z-index: 1000; text-decoration: none;" title="Usulkan Buku Baru">
-        <span class="bg-white text-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
-            <i class="bi bi-plus-lg fs-5"></i>
-        </span>
-        <span>Request Buku</span>
+    <!-- Tombol Request -->
+    <a href="request/request.html" id="requestBtn" class="btn btn-primary action-btn rounded-pill d-none px-3 py-2 fw-bold align-items-center gap-2">
+        <i class="bi bi-plus-lg"></i> Request
     </a>
+
+    <!-- Tombol Pemicu Utama -->
+    <button id="mainActionBtn" class="btn btn-dark main-action-btn shadow-lg">
+        <i class="bi bi-three-dots fs-4"></i>
+    </button>
+</div>
 </body>
 </html>
