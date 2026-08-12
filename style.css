@@ -64,4 +64,16 @@
     .card-text {
         font-size: 0.75rem !important;
     }
+    .book-img {
+    height: 140px;
+    object-fit: cover;
+    }
+    
+}
+
+@media (min-width: 768px) {
+    .book-img {
+        height: 300px !important;
+        object-fit: cover;
+    }
 }

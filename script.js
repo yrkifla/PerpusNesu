@@ -73,21 +73,23 @@ onSnapshot(collection(db, "books"), (snapshot) => {
     loadingIndicator.innerHTML = `<p class="text-danger">Gagal memuat database. Periksa konfigurasi Firebase Anda.</p>`;
 });
 
-// Render Buku Populer (Top 4 Berdasarkan Reads Terbanyak)
+// Render Buku Populer (Top 3 Berdasarkan Reads Terbanyak)
 function renderPopularBooks() {
-    const sortedPopular = [...globalBooks].sort((a, b) => b.reads - a.reads).slice(0, 4);
+    // .slice(0, 3) mengambil 3 buku teratas
+    const sortedPopular = [...globalBooks].sort((a, b) => b.reads - a.reads).slice(0, 3);
     popularBooksContainer.innerHTML = '';
     
     sortedPopular.forEach(book => {
         popularBooksContainer.innerHTML += `
-            <div class="col-3 mb-4"> <!-- MENGGUNAKAN col-3 = 4 BUKU PER BARIS -->
+            <div class="col-4 mb-4"> <!-- 3 buku per baris -->
                 <div class="card book-card border-0 shadow-sm h-100">
-                    <img src="${book.image}" class="card-img-top" alt="${book.title}" style="height: 120px; object-fit: cover;">
+                    <img src="${book.image}" class="card-img-top book-img" alt="${book.title}">
                     <div class="card-body d-flex flex-column p-2">
-                        <span class="badge bg-danger mb-1 fs-xs" style="font-size: 0.65rem;"><i class="bi bi-fire"></i> ${book.reads}</span>
-                        <p class="card-title fs-6 fw-bold text-truncate">${book.title}</p>
-                        <button class="mt-auto btn btn-danger btn-sm w-100 py-1" style="font-size: 0.75rem;" onclick="bacaBuku('${book.id}', '${book.title}', '${book.link}')">
-                            <i class="bi bi-book"></i> Baca
+                        <span class="badge bg-danger mb-2 align-self-start"><i class="bi bi-fire"></i> ${book.reads}</span>
+                        <h5 class="card-title fs-6 fw-bold text-truncate">${book.title}</h5>
+                        <p class="card-text text-muted small mb-3 text-truncate">${book.author}</p>
+                        <button class="mt-auto btn btn-danger btn-sm w-100" onclick="bacaBuku('${book.id}', '${book.title}', '${book.link}')">
+                            <i class="bi bi-book me-1"></i> Baca
                         </button>
                     </div>
                 </div>
@@ -95,7 +97,6 @@ function renderPopularBooks() {
         `;
     });
 }
-
 // Render Katalog Utama (Search, Kategori, Sortir Abjad)
 function renderCatalog() {
     const keyword = searchInput.value.toLowerCase();
@@ -129,7 +130,7 @@ function renderCatalog() {
 bookContainer.innerHTML += `
     <div class="col-6 col-md-3 mb-4"> <!-- UBAH DI SINI: col-6 untuk HP, col-md-3 untuk PC -->
         <div class="card book-card border-0 shadow-sm h-100">
-            <img src="${book.image}" class="card-img-top" alt="${book.title}" style="height: 150px; object-fit: cover;"> <!-- Perkecil tinggi gambar agar tidak terlalu panjang di HP -->
+            <img src="${book.image}" class="card-img-top book-img" alt="${book.title}">
             <div class="card-body d-flex flex-column p-2"> <!-- Padding p-2 agar lebih hemat tempat -->
                 <h5 class="card-title fs-6 fw-bold text-truncate">${book.title}</h5>
                 <p class="card-text text-muted small mb-2 text-truncate">${book.author}</p>
