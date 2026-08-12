@@ -80,13 +80,15 @@ function renderPopularBooks() {
     
     sortedPopular.forEach(book => {
         popularBooksContainer.innerHTML += `
-            <div class="col-md-3 col-sm-6 mb-3">
-                <div class="card book-card border-0 shadow-sm">
-                    <img src="${book.image}" class="card-img-top" alt="${book.title}" style="height: 200px; object-fit: cover;">
-                    <div class="card-body">
-                        <span class="badge bg-danger mb-2"><i class="bi bi-fire"></i> ${book.reads} Pembaca</span>
-                        <h5 class="card-title fs-6 fw-bold text-truncate">${book.title}</h5>
-                        <p class="card-text text-muted small mb-0">${book.author}</p>
+            <div class="col-3 mb-4"> <!-- MENGGUNAKAN col-3 = 4 BUKU PER BARIS -->
+                <div class="card book-card border-0 shadow-sm h-100">
+                    <img src="${book.image}" class="card-img-top" alt="${book.title}" style="height: 120px; object-fit: cover;">
+                    <div class="card-body d-flex flex-column p-2">
+                        <span class="badge bg-danger mb-1 fs-xs" style="font-size: 0.65rem;"><i class="bi bi-fire"></i> ${book.reads}</span>
+                        <p class="card-title fs-6 fw-bold text-truncate">${book.title}</p>
+                        <button class="mt-auto btn btn-danger btn-sm w-100 py-1" style="font-size: 0.75rem;" onclick="bacaBuku('${book.id}', '${book.title}', '${book.link}')">
+                            <i class="bi bi-book"></i> Baca
+                        </button>
                     </div>
                 </div>
             </div>
